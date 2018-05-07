@@ -4,7 +4,7 @@ APR enhances the pairwise ranking method BPR by performing adversarial training.
 
 This is our official implementation for the paper:
 
-**Adversarial Personalized Ranking for Recommendation**  Xiangnan He, Zhankui He, Xiaoyu Du & Tat-Seng Chua, *SIGIR 2018*  (Corresponding Author: [Dr. Xiangnan He][http://www.comp.nus.edu.sg/~xiangnan/])
+**Adversarial Personalized Ranking for Recommendation**  Xiangnan He, Zhankui He, Xiaoyu Du & Tat-Seng Chua, *SIGIR 2018*  (Corresponding Author: [Dr. Xiangnan He](http://www.comp.nus.edu.sg/~xiangnan/))
 
 If you use the codes, please cite our paper . Thanks!
 
@@ -16,11 +16,11 @@ TensorFlow >= r1.0
 
 Numpy >= 1.12
 
-##Quick to Start
+## Quick to Start
 
 ![figure](figure/figure.jpg)
 
-####Demo:  Effect of APR
+#### Demo:  Effect of APR
 
 This command shows the effect of APR by adding adversarial perturbation on **pretrained** MF model for dataset yelp in epoch 40.  
 
@@ -30,7 +30,7 @@ python AMF.py --dataset yelp --adv_epoch 40 --epochs 1000 --eps 0.5 --reg_adv 1 
 
 or use  `./demo.sh` for short.
 
-####Training: From MF to AMF
+#### Training: From MF to AMF
 
 To launch the entire training experiment quickly, you can use:
 
@@ -42,7 +42,7 @@ or `./train.sh yelp`  for short.
 
 Use `python AMF.py -h`  to get more argument setting details.
 
-##Dataset
+## Dataset
 
 We provide three processed datasets:  Yelp(yelp), MovieLens 1 Million (ml-1m) and Pinterest (pinterest-20) in Data/
 
