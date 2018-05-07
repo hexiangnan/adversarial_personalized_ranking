@@ -18,11 +18,11 @@ TensorFlow >= r1.0
 
 Numpy >= 1.12
 
-##Quick to Start
+## Quick to Start
 
-![figure](figure/figure.jpg)
+![figure](figure/figure.jpg){:height="50%" width="50%"}
 
-####Demo:  Effect of APR
+#### Demo:  Effect of APR
 
 This command shows the effect of APR by adding adversarial perturbation on **pretrained** MF model for dataset yelp in epoch 40.  
 
@@ -32,7 +32,7 @@ python AMF.py --dataset yelp --adv_epoch 40 --epochs 1000 --eps 0.5 --reg_adv 1 
 
 or use  `./demo.sh` for short.
 
-####Training: From MF to AMF
+#### Training: From MF to AMF
 
 To launch the entire training experiment quickly, you can use:
 
@@ -55,8 +55,7 @@ Use `python AMF.py -h`  to get more argument setting details.
 ......
 ```
 
-##Dataset
-
+## Dataset
 We provide three processed datasets:  Yelp(yelp), MovieLens 1 Million (ml-1m) and Pinterest (pinterest-20) in Data/
 
 **train.rating:**
