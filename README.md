@@ -4,7 +4,9 @@ APR enhances the pairwise ranking method BPR by performing adversarial training.
 
 This is our official implementation for the paper:
 
-**Adversarial Personalized Ranking for Recommendation**  Xiangnan He, Zhankui He, Xiaoyu Du & Tat-Seng Chua, *SIGIR 2018*  (Corresponding Author: [Dr. Xiangnan He](http://www.comp.nus.edu.sg/~xiangnan/))
+**Adversarial Personalized Ranking for Recommendation**  
+Xiangnan He, Zhankui He, Xiaoyu Du & Tat-Seng Chua, *SIGIR 2018*  
+(Corresponding Author: [Dr. Xiangnan He](http://www.comp.nus.edu.sg/~xiangnan/))
 
 If you use the codes, please cite our paper . Thanks!
 
@@ -18,7 +20,7 @@ Numpy >= 1.12
 
 ## Quick to Start
 
-![figure](figure/figure.jpg)
+![figure](figure/figure.jpg){:height="50%" width="50%"}
 
 #### Demo:  Effect of APR
 
