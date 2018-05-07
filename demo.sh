@@ -1,0 +1,1 @@
+python AMF.py --dataset yelp --adv_epoch 40 --epochs 1000 --eps 0.5 --reg_adv 1 --verbose 20 --restore 2018_05_06_16_09_24
