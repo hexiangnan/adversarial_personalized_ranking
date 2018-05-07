@@ -4,7 +4,9 @@ APR enhances the pairwise ranking method BPR by performing adversarial training.
 
 This is our official implementation for the paper:
 
-**Adversarial Personalized Ranking for Recommendation**  Xiangnan He, Zhankui He, Xiaoyu Du & Tat-Seng Chua, *SIGIR 2018*  (Corresponding Author: [Dr. Xiangnan He][http://www.comp.nus.edu.sg/~xiangnan/])
+**Adversarial Personalized Ranking for Recommendation**  Xiangnan He, Zhankui He, Xiaoyu Du & Tat-Seng Chua, *SIGIR 2018*  
+
+(Corresponding Author: [Dr. Xiangnan He][http://www.comp.nus.edu.sg/~xiangnan/])
 
 If you use the codes, please cite our paper . Thanks!
 
@@ -40,7 +42,18 @@ python AMF.py --dataset yelp --adv_epoch 1000 --epochs 2000 --eps 0.5 --reg_adv 
 
 or `./train.sh yelp`  for short.  
 
+#### More Details:
+
 Use `python AMF.py -h`  to get more argument setting details.
+
+```shell
+-h, --help            show this help message and exit
+--path [PATH]         Input data path.
+--dataset [DATASET]   Choose a dataset.
+--verbose VERBOSE     Evaluate per X epochs.
+--epochs EPOCHS       Number of epochs.
+......
+```
 
 ##Dataset
 
