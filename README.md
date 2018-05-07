@@ -18,7 +18,7 @@ TensorFlow >= r1.0
 
 Numpy >= 1.12
 
-## Quick to Start
+## Quick Start
 
 ![figure](figure/figure.jpg)
 
