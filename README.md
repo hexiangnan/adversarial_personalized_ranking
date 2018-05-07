@@ -20,7 +20,7 @@ Numpy >= 1.12
 
 ## Quick to Start
 
-![figure](figure/figure.jpg){:height="50%" width="50%"}
+![figure](figure/figure.jpg)
 
 #### Demo:  Effect of APR
 
