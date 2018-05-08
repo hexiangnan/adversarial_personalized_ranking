@@ -24,7 +24,7 @@ Numpy >= 1.12
 
 #### Demo:  Effect of APR
 
-This command shows the effect of APR by adding adversarial perturbation on **pretrained** MF model for dataset yelp in epoch 40.  
+This command shows the effect of APR by adding adversarial perturbation on **pretrained** MF model (--restore) for dataset yelp in epoch 40.  
 
 ```shell
 python AMF.py --dataset yelp --adv_epoch 40 --epochs 1000 --eps 0.5 --reg_adv 1 --verbose 20 --restore 2018_05_06_16_09_24
@@ -40,7 +40,7 @@ To launch the entire training experiment quickly, you can use:
 python AMF.py --dataset yelp --adv_epoch 1000 --epochs 2000 --eps 0.5 --reg_adv 1 --ckpt 1 --verbose 20
 ```
 
-or `./train.sh yelp`  for short.  
+or `./train.sh yelp`  for short. This command can generate the above figure (same as the paper). Specifically, it trains 2000 epochs (--epochs) in total, where the first 1000 epochs train MF-BPR, and then followed by 1000 epochs (--adv_epoch) of AMF training. 
 
 #### More Details:
 
