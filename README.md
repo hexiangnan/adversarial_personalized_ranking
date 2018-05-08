@@ -4,7 +4,7 @@ APR enhances the pairwise ranking method BPR by performing adversarial training.
 
 This is our official implementation for the paper:
 
-**Adversarial Personalized Ranking for Recommendation**  Xiangnan He, Zhankui He, Xiaoyu Du & Tat-Seng Chua, *SIGIR 2018*  
+Xiangnan He, Zhankui He, Xiaoyu Du & Tat-Seng Chua. 2018. **Adversarial Personalized Ranking for Recommendation**  , In *Proceedings of SIGIR'18*.   
 
 (Corresponding Author: [Dr. Xiangnan He](http://www.comp.nus.edu.sg/~xiangnan/))
 
@@ -24,7 +24,7 @@ Numpy >= 1.12
 
 #### Demo:  Effect of APR
 
-This command shows the effect of APR by adding adversarial perturbation on **pretrained** MF model (--restore) for dataset yelp in epoch 40.  
+This command shows the effect of APR by adding adversarial perturbation on **pretrained** MF model (--restore) for dataset yelp in epoch 40 (--adv_epoch). After loading the pretrained model, the first 40 epochs are normal MF-BPR, followed by adversarial training APR. 
 
 ```shell
 python AMF.py --dataset yelp --adv_epoch 40 --epochs 1000 --eps 0.5 --reg_adv 1 --verbose 20 --restore 2018_05_06_16_09_24
@@ -40,7 +40,7 @@ To launch the entire training experiment quickly, you can use:
 python AMF.py --dataset yelp --adv_epoch 1000 --epochs 2000 --eps 0.5 --reg_adv 1 --ckpt 1 --verbose 20
 ```
 
-or `./train.sh yelp`  for short. This command can generate the above figure (same as the paper). Specifically, it trains 2000 epochs (--epochs) in total, where the first 1000 epochs train MF-BPR, and then followed by 1000 epochs (--adv_epoch) of AMF training. 
+or `./train.sh yelp`  for short. This command can generate the above figure (same as the paper). Specifically, it trains 2000 epochs (--epochs) in total, where the first 1000 epochs train MF-BPR (--adv_epoch), and then followed by 1000 epochs of AMF training. 
 
 #### More Details:
 
@@ -52,6 +52,7 @@ Use `python AMF.py -h`  to get more argument setting details.
 --dataset [DATASET]   Choose a dataset.
 --verbose VERBOSE     Evaluate per X epochs.
 --epochs EPOCHS       Number of epochs.
+--adv_epochs          The epoch # that starts adversarial training (before that are normal BPR training). 
 ......
 ```
 
