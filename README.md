@@ -77,4 +77,6 @@ We provide three processed datasets:  Yelp(yelp), MovieLens 1 Million (ml-1m) an
 - Each line corresponds to the line of test.rating, containing 99 negative samples.
 - Each line is in the format: (userID,itemID)\t negativeItemID1\t negativeItemID2 ...
 
+*PS. In our experiments, we adopt the **all ranking** evaluation strategy. But we still provide the dataloader function for **negative sampling** evaluation in Dataset.py for people who are interested in it. *
+
 Update: May 7, 2018
