@@ -115,7 +115,7 @@ def _get_train_batch(i):
             # negtive k
             gtItem = _dataset.testRatings[user][1]
             j = np.random.randint(_dataset.num_items)
-            while j in _dataset.trainList[_user_input[_index[idx]]] or j == gtItem:
+            while j in _dataset.trainList[_user_input[_index[idx]]]:
                 j = np.random.randint(_dataset.num_items)
             item_neg_batch.append(j)
     return np.array(user_batch)[:, None], np.array(item_batch)[:, None], \
