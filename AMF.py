@@ -165,7 +165,7 @@ class MF:
             self.embedding_p = tf.reduce_sum(tf.nn.embedding_lookup(self.embedding_P, self.user_input), 1)
             self.embedding_q = tf.reduce_sum(tf.nn.embedding_lookup(self.embedding_Q, item_input),
                                              1)  # (b, embedding_size)
-            return tf.matmul(self.embedding_p * self.embedding_q, self.h)  # (b, embedding_size) * (embedding_size, 1)
+            return tf.matmul(self.embedding_p * self.embedding_q, self.h), self.embedding_p, self.embedding_q # (b, embedding_size) * (embedding_size, 1)
 
     def _create_inference_adv(self, item_input):
         with tf.name_scope("inference_adv"):
@@ -177,29 +177,31 @@ class MF:
             self.P_plus_delta = self.embedding_p + tf.reduce_sum(tf.nn.embedding_lookup(self.delta_P, self.user_input),
                                                                  1)
             self.Q_plus_delta = self.embedding_q + tf.reduce_sum(tf.nn.embedding_lookup(self.delta_Q, item_input), 1)
-            return tf.matmul(self.P_plus_delta * self.Q_plus_delta, self.h)  # (b, embedding_size) * (embedding_size, 1)
+            return tf.matmul(self.P_plus_delta * self.Q_plus_delta, self.h), self.embedding_p, self.embedding_q  # (b, embedding_size) * (embedding_size, 1)
 
     def _create_loss(self):
         with tf.name_scope("loss"):
             # loss for L(Theta)
-            self.output = self._create_inference(self.item_input_pos)
-            self.output_neg = self._create_inference(self.item_input_neg)
-            self.result = self.output - self.output_neg
+            self.output, embed_p_pos, embed_q_pos = self._create_inference(self.item_input_pos)
+            self.output_neg, embed_p_neg, embed_q_neg = self._create_inference(self.item_input_neg)
+            self.result = tf.clip_by_value(self.output - self.output_neg, -80.0, 1e8)
             # self.loss = tf.reduce_sum(tf.log(1 + tf.exp(-self.result))) # this is numerically unstable
             self.loss = tf.reduce_sum(tf.nn.softplus(-self.result))
 
             # loss to be omptimized
-            self.opt_loss = self.loss + self.reg * (
-                        tf.reduce_sum(tf.square(self.embedding_P)) + tf.reduce_sum(tf.square(self.embedding_Q)))
+            self.opt_loss = self.loss + self.reg * 
+                    tf.reduce_mean(tf.square(embed_p_pos) + tf.square(embed_q_pos) + tf.square(embed_q_neg)) # embed_p_pos == embed_q_neg
 
             if self.adver:
                 # loss for L(Theta + adv_Delta)
-                self.output_adv = self._create_inference_adv(self.item_input_pos)
-                self.output_neg_adv = self._create_inference_adv(self.item_input_neg)
-                self.result_adv = self.output_adv - self.output_neg_adv
+                self.output_adv, embed_p_pos, embed_q_pos = self._create_inference_adv(self.item_input_pos)
+                self.output_neg_adv, embed_p_neg, embed_q_neg = self._create_inference_adv(self.item_input_neg)
+                self.result_adv = tf.clip_by_value(self.output_adv - self.output_neg_adv, -80.0, 1e8)
                 # self.loss_adv = tf.reduce_sum(tf.log(1 + tf.exp(-self.result_adv)))
                 self.loss_adv = tf.reduce_sum(tf.nn.softplus(-self.result_adv))
-                self.opt_loss += self.reg_adv * self.loss_adv
+                self.opt_loss += self.reg_adv * self.loss_adv + \
+                                 self.reg * tf.reduce_mean(tf.square(embed_p_pos) + tf.square(embed_q_pos) + tf.square(embed_q_neg))
+
 
     def _create_adversarial(self):
         with tf.name_scope("adversarial"):
