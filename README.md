@@ -18,6 +18,8 @@ TensorFlow >= r1.0
 
 Numpy >= 1.12
 
+PS. For your reference, our server environment is Intel Xeon CPU E5-2630 @ 2.20 GHz and 64 GiB memory. We recommend your free memory is more than 16 GiB to reproduce our experiments.
+
 ## Quick Start
 
 ![figure](figure/figure.jpg)
